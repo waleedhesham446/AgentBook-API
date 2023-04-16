@@ -1,0 +1,31 @@
+{
+  "name": "agentbook-api",
+  "version": "1.0.0",
+  "description": "This is a mock-up project for the AgentBook API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waleedhesham446/AgentBook-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waleedhesham446/AgentBook-API/issues"
+  },
+  "homepage": "https://github.com/waleedhesham446/AgentBook-API#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "nodejs-nodemailer-outlook": "^1.2.4"
+  }
+}
