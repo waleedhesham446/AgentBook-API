@@ -1,5 +1,6 @@
 // models
 const Card = require('../models/Card');
+const User = require('../models/User');
 
 exports.list = async (req, res) => {
 
@@ -18,7 +19,9 @@ exports.create = async (req, res) => {
     try {
         const { userId } = req;     //  from the middleware auth
         const { title, description, assignees, category } = req.body;
-        if (!title || !description) return res.status(400).json({ message: 'Title and description are required' });
+
+        const existUser = await User.findById(userId);
+        if (!existUser) return res.status(400).json({ message: 'User not found' });
 
         const newCard = await Card.create({ title, description, assignees, category, createdBy: userId });
 

@@ -16,7 +16,6 @@ exports.signup = async (req, res) => {
 
     try {
         const { email, password, name, picture } = req.body;
-        if (!email || !password || !name) return res.status(400).json({ message: 'Email, password, name are required' });
     
         const existUser = await User.findOne({ email });
         if (existUser) return res.status(400).json({ message: 'This email is already registered' });
@@ -40,7 +39,6 @@ exports.login = async (req, res) => {
     
     try {
         const { email, password } = req.body;
-        if (!email || !password) return res.status(400).json({ message: 'Email and password are required' });
     
         let existUser = await User.findOne({ email });
         if (!existUser) return res.status(400).json({ message: 'This email is not registered' });
@@ -64,7 +62,6 @@ exports.forgotPassword = async (req, res) => {
 
     try {
         const { email } = req.body;
-        if (!email) return res.status(400).json({ message: 'Email is required' });
     
         const user = await User.findOne({ email }).select('name');
         if (!user) return res.status(400).json({ message: 'This email is not registered' });
@@ -91,8 +88,6 @@ exports.resetPassword = async (req, res) => {
         const isValid = await bcrypt.compare(token, passwordResetToken.token);
         if (!isValid) return res.status(400).json({ message: 'Invalid or expired password reset token' });
         
-        if(!password) return res.status(400).json({ message: 'Password is required' });
-
         const user = await User.findOneAndUpdate(
             { _id: userId },
             { $set: { password } },
